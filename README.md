@@ -1,98 +1,86 @@
-# Libft (42cursus) 2023-2024
+# Libft
 
-## Actual Status: Finished (125%)
+`libft` is a 42 project that recreates many useful C standard library functions and adds extra helper functions, including linked-list utilities.
 
-### Functions from `<ctype.h>` Library
+The goal is to build a reusable static library that can be linked into future C projects.
 
-- `ft_isascii`: Test for ASCII character.
-- `ft_isalnum`: Alphanumeric character test.
-- `ft_isalpha`: Alphabetic character test.
-- `ft_islower *`: Lower-case character test.
-- `ft_isupper *`: Upper-case character test.
-- `ft_isdigit`: Decimal-digit character test.
-- `ft_isxdigit *`: Hexadecimal-digit character test.
-- `ft_isprint`: Printing character test (space character inclusive).
-- `ft_isgraph *`: Printing character test (space character exclusive).
-- `ft_isspace *`: White-space character test.
-- `ft_isblank *`: Space or tab character test.
-- `ft_ispunct *`: Punctuation character test.
-- `ft_iscntrl *`: Control character test.
-- `ft_tolower`: Upper case to lower case letter conversion.
-- `ft_toupper`: Lower case to upper case letter conversion.
+## How to download
 
-### Functions from `<stdlib.h>` Library
+Clone the repository:
 
-- `ft_atoi`: Convert ASCII string to integer.
-- `ft_atof *`: Convert ASCII string to integer.
-- `ft_calloc`: Memory allocation.
+```bash
+git clone https://github.com/mcarepa-42/libft.git
+cd libft
+```
 
-### Functions from `<strings.h>` Library
+Or download it from GitHub by clicking **Code** > **Download ZIP**, then extract the ZIP and open a terminal inside the project folder.
 
-- `ft_bzero`: Write zeroes to a byte string.
-- `ft_memset`: Write a byte to a byte string.
-- `ft_memchr`: Locate byte in byte string.
-- `ft_memcmp`: Compare byte string.
-- `ft_memmove`: Copy byte string.
-- `ft_memcpy`: Copy memory area.
-- `ft_memccpy`: Copy string until character found.
+## Requirements
 
-### Functions from `<string.h>` Library
+You need:
 
-- `ft_strlen`: Find length of string.
-- `ft_strlen_2 *`: Find length of 2D array (i.e. splitted string).
-- `ft_strchr`: Locate character in string (first occurrence).
-- `ft_strrchr`: Locate character in string (last occurrence).
-- `ft_strstr *`: Locate a substring in a string.
-- `ft_strnstr`: Locate a substring in a string (size-bounded).
-- `ft_strcmp *`: Compare strings.
-- `ft_strncmp *`: Compare strings (size-bounded).
-- `ft_strnrcmp`: Reversely compare strings (size-bounded).
-- `ft_strcpy *`: Copy strings.
-- `ft_strncpy *`: Copy strings (size-bounded).
-- `ft_strdup`: Save a copy of a string (with malloc).
-- `ft_strndup *`: Save a copy of a string (with malloc, size-bounded).
-- `ft_strcat *`: Concatenate strings (s2 into s1).
-- `ft_strncat *`: Concatenate strings (s2 into s1, size-bounded).
-- `ft_strlcpy`: Size-bounded string copying.
-- `ft_strlcat`: Size-bounded string concatenation.
+- `make`, if a Makefile is present;
+- a C compiler such as `cc`, `gcc`, or `clang`.
 
-### Functions from `<math.h>` Library
+## How to build
 
-- `ft_sqrt *`: Square root function.
-- `ft_pow *`: Power function.
+If the repository contains a Makefile, run:
 
-### Non-standard Functions
+```bash
+make
+```
 
-- `ft_swap *`: Swap value of two integers.
-- `ft_putchar *`: Output a character to stdout.
-- `ft_putchar_fd`: Output a character to given file.
-- `ft_putstr *`: Output string to stdout.
-- `ft_putstr_fd`: Output string to given file.
-- `ft_putendl *`: Output string to stdout with newline.
-- `ft_putendl_fd`: Output string to given file with newline.
-- `ft_putnbr *`: Output integer to stdout.
-- `ft_putnbr_fd`: Output integer to given file.
-- `ft_itoa`: Convert integer to ASCII string.
-- `ft_substr`: Extract substring from string.
-- `ft_strtrim`: Trim beginning and end of string with the specified characters.
-- `ft_strjoin`: Concatenate two strings into a new string (with malloc).
-- `ft_split`: Split string, with specified character as delimiter, into an array of strings.
-- `ft_split_free *`: Free splitted string.
-- `ft_strmapi`: Create new string from modifying string with specified function.
-- `ft_ftoa_rnd`: Convert float to ASCII string.
+This should create a static library, usually named:
 
-### Linked List Functions
+```text
+libft.a
+```
 
-- `ft_lstnew`: Create new list.
-- `ft_lstsize`: Count elements of a list.
-- `ft_lstlast`: Find last element of list.
-- `ft_lstadd_back`: Add new element at end of list.
-- `ft_lstadd_front`: Add new element at beginning of list.
-- `ft_lstdelone`: Delete element from list.
-- `ft_lstclear`: Delete sequence of elements of list from a starting point.
-- `ft_lstiter`: Apply function to content of all list's elements.
-- `ft_lstmap`: Apply function to content of all list's elements into new list.
+If there is no Makefile in your downloaded version, you can manually compile the source files:
 
-**Note**: Functions marked with * are bonus functions (not mandatory by the project's subject).
-**Note2**: My makefile explains everything that is happening with each command :)
+```bash
+cc -Wall -Wextra -Werror -c *.c
+ar rcs libft.a *.o
+```
 
+## How to use in another program
+
+Create a small test file:
+
+```c
+#include "libft.h"
+#include <stdio.h>
+
+int main(void)
+{
+    printf("Length: %zu\n", ft_strlen("hello"));
+    return 0;
+}
+```
+
+Compile it with the library:
+
+```bash
+cc test.c libft.a -o test
+./test
+```
+
+## Useful commands
+
+```bash
+make clean    # Remove object files
+make fclean   # Remove object files and libft.a
+make re       # Rebuild everything
+```
+
+## Included functionality
+
+This library includes functions for:
+
+- character checks and conversions;
+- string manipulation;
+- memory manipulation;
+- number conversion;
+- output to file descriptors;
+- dynamic allocation helpers;
+- linked-list operations.
